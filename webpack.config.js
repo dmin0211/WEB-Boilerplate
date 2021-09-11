@@ -1,11 +1,19 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const devMode = process.env.NODE_ENV === 'development';
 
 module.exports = {
     // Entry Point
     entry: {
         index: "./src/index.js",
         about: "./src/about.js",
+    },
+
+    optimization: {
+        splitChunks: {
+            chunks: "all",
+        },
     },
 
     plugins: [
@@ -18,7 +26,7 @@ module.exports = {
             // 해당 Page 에 필요한 Chuck 선언
             chunks: ['index'],
             templateParameters: {
-                env: process.env.NODE_ENV === 'development' ? '(DEV)' : '',
+                env: devMode ? '(DEV)' : '',
                 lang: 'ko-KR'
             },
         }),
@@ -29,7 +37,7 @@ module.exports = {
             // 해당 Page 에 필요한 Chuck 선언
             chunks: ['about'],
             templateParameters: {
-                env: process.env.NODE_ENV === 'development' ? '(DEV)' : '',
+                env: devMode ? '(DEV)' : '',
                 lang: 'ko-KR'
             },
         }),
@@ -62,9 +70,12 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css$/i,
+                test: /\.(sa|sc|c)ss$/i,
                 // style -> css 순서가 보장되어야 함
-                use: ['style-loader', 'css-loader'],
+                use: [
+                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    'css-loader'
+                ],
             },
             {
                 // image 내장 asset 모듈 사용
