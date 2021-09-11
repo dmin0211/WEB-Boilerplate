@@ -9,13 +9,6 @@ module.exports = {
         index: "./src/index.js",
         about: "./src/about.js",
     },
-
-    optimization: {
-        splitChunks: {
-            chunks: "all",
-        },
-    },
-
     plugins: [
         // Build 시 자동으로 index.html 생성
         // entry point 가 2개 이상인 경우 생성된 html5에 모두 script 로 추가됨
@@ -64,8 +57,19 @@ module.exports = {
         // build 시 output directory 초기화
         clean: true,
     },
+    // caching issue
     optimization: {
         runtimeChunk: 'single',
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all',
+                    enforce: true
+                },
+            },
+        },
     },
     module: {
         rules: [
