@@ -1,20 +1,44 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    // Entry Point 1개
+    // Entry Point
     entry: {
-        index: './src/index.js',
+        index: "./src/index.js",
+        about: "./src/about.js",
     },
-    // Entry Point 2개 이상
-    // entry: {
-    //     index: "./src/index.js",
-    //     about: "./src/about.js",
-    // },
+
+    plugins: [
+        // Build 시 자동으로 index.html 생성
+        // entry point 가 2개 이상인 경우 생성된 html5에 모두 script 로 추가됨
+        new HtmlWebpackPlugin({
+            title: 'Index Page',
+            filename: "index.[chunkhash].html",
+            template: path.join(__dirname, 'src/index.html'),
+            // 해당 Page 에 필요한 Chuck 선언
+            chunks: ['index'],
+            templateParameters: {
+                env: process.env.NODE_ENV === 'development' ? '(DEV)' : '',
+                lang: 'ko-KR'
+            },
+        }),
+        new HtmlWebpackPlugin({
+            title: 'About Page',
+            filename: "about.[chunkhash].html",
+            template: path.join(__dirname, 'src/about.html'),
+            // 해당 Page 에 필요한 Chuck 선언
+            chunks: ['about'],
+            templateParameters: {
+                env: process.env.NODE_ENV === 'development' ? '(DEV)' : '',
+                lang: 'ko-KR'
+            },
+        }),
+    ],
 
     // output 은 하나만 지정 가능
     output: {
         // bundling output
-        filename: "[name].js",
+        filename: "[name][hash].js",
         // bundling 출력의 대상이 되는 Directory - 반드시 절대 경로
         path: path.resolve(__dirname, 'dist'),
         // 브라우저가 참조 시 출력 Directory 의 공용 URL
@@ -30,6 +54,8 @@ module.exports = {
         },
         // asset module 의 default file name 수정
         assetModuleFilename: 'images/[name].[hash][ext][query]',
+        // build 시 output directory 초기화
+        clean: true,
     },
     module: {
         rules: [
