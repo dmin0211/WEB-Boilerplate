@@ -74,6 +74,11 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.js$/i,
+                use: 'babel-loader',
+                exclude: /node_modules/,
+            },
+            {
                 test: /\.(sa|sc|c)ss$/i,
                 // style -> css 순서가 보장되어야 함
                 use: [
