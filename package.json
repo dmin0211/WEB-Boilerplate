@@ -14,12 +14,15 @@
     "mini-css-extract-plugin": "^2.3.0",
     "npm": "^7.23.0",
     "style-loader": "^3.2.1",
+    "webpack-dev-server": "^4.2.0",
     "webpack-merge": "^5.8.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "dev": "webpack --config webpack.dev.js",
+    "dev-server": "webpack server --config webpack.dev.js --open"
   },
   "keywords": [],
   "author": "",
