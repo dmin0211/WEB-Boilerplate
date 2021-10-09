@@ -6,24 +6,13 @@ const devMode = process.env.NODE_ENV === 'development';
 module.exports = {
     entry: {
         index: "./src/index.js",
-        about: "./src/about.js",
     },
     plugins: [
         new HtmlWebpackPlugin({
             title: 'Index Page',
-            filename: "index.[contenthash].html",
+            filename: "index.html",
             template: path.join(__dirname, 'src/index.html'),
             chunks: ['index'],
-            templateParameters: {
-                env: devMode ? '(DEV)' : '',
-                lang: 'ko-KR'
-            },
-        }),
-        new HtmlWebpackPlugin({
-            title: 'About Page',
-            filename: "about.[contenthash].html",
-            template: path.join(__dirname, 'src/about.html'),
-            chunks: ['about'],
             templateParameters: {
                 env: devMode ? '(DEV)' : '',
                 lang: 'ko-KR'
@@ -32,7 +21,7 @@ module.exports = {
     ],
     output: {
         filename: "[name].[contenthash].js",
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'backend/public'),
         publicPath: "auto",
         library: {
             name: 'MyLibrary',
@@ -71,7 +60,6 @@ module.exports = {
                         loader: 'sass-loader',
                         options: {
                             sourceMap: true,
-                            additionalData: '@use [path]'
                         }
                     }
                 ],

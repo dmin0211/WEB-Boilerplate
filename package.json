@@ -18,6 +18,7 @@
     "mini-css-extract-plugin": "^2.3.0",
     "npm": "^7.23.0",
     "sass": "^1.41.1",
+    "sass-loader": "^12.1.0",
     "style-loader": "^3.2.1",
     "webpack-dev-server": "^4.2.0",
     "webpack-merge": "^5.8.0"
