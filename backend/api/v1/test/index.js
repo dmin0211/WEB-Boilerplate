@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const testRouter = require('./test');
 
-router.use('/test', testRouter);
+router.use((req, res, next) => {
+    console.log('middleware');
+    res.send('test');
+})
 
 module.exports = router;
