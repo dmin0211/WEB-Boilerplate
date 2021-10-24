@@ -1,9 +1,9 @@
 const express = require('express');
+
 const router = express.Router();
 
-router.use((req, res, next) => {
-    console.log('middleware');
-    res.send('test');
-})
+router.get('/', (req, res, next) => {
+  res.status(200).json({ code: 'success' });
+});
 
 module.exports = router;
