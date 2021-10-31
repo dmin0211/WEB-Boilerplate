@@ -1,19 +1,6 @@
-# Boilerplate
-## Webpack 기본 설정
-https://github.com/dmin0211/WEB-boilerplate/tree/webpack
+# Eslint(Airbnb), Prettier, React 기본 설정
 
-## Webpack 기본 설정 + Typescript
-https://github.com/dmin0211/WEB-boilerplate/tree/webpack-typescript
-
-## Eslint(Airbnb), Prettier 기본 설정
-https://github.com/dmin0211/WEB-boilerplate/tree/eslint-airbnb-prettier
-
-## Webpack 과 Express
-https://github.com/dmin0211/WEB-boilerplate/tree/express-webpack
-
-## React(CRA) 와 Express
-https://github.com/dmin0211/WEB-boilerplate/tree/react-express
-
-## Express Session(Redis)
-https://github.com/dmin0211/WEB-boilerplate/tree/express-session-redis
-
+### devDependencies 모듈
+```shell
+npm install --save-dev babel-eslint eslint-config-airbnb eslint-config-prettier eslint-import-resolver-alias eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks prettier
+```
