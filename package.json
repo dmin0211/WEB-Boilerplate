@@ -19,6 +19,8 @@
     "npm": "^7.23.0",
     "sass": "^1.41.1",
     "style-loader": "^3.2.1",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.4.4",
     "webpack-dev-server": "^4.2.0",
     "webpack-merge": "^5.8.0"
   },
