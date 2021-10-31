@@ -1,15 +1,8 @@
-# Boilerplate
-## Webpack 기본 설정
-https://github.com/dmin0211/WEB-boilerplate/tree/webpack
+# eslint(airbnb)-prettier
+기본 설정 + single-quote, camel_case rule 추가
 
-## Webpack 기본 설정 + Typescript
-https://github.com/dmin0211/WEB-boilerplate/tree/webpack-typescript
 
-## Eslint(Airbnb), Prettier 기본 설정
-https://github.com/dmin0211/WEB-boilerplate/tree/eslint-airbnb-prettier
-
-## Webpack 과 Express
-https://github.com/dmin0211/WEB-boilerplate/tree/express-webpack
-
-## React(CRA) 와 Express
-https://github.com/dmin0211/WEB-boilerplate/tree/react-express
+### 모듈 추가
+```
+npm install --save-dev babel-eslint eslint eslint-config-airbnb-base eslint-config-prettier eslint-plugin-import eslint-plugin-prettier prettier
+```
